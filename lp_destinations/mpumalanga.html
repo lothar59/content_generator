@@ -4,6 +4,12 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <title>Lonely Planet</title>
 <link href="static/all.css" media="screen" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css">
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script><script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script><script>
+    $(function() {
+      $( "#content" ).tabs();
+    });
+  </script>
 </head>
 <body>
 
@@ -29,27 +35,38 @@
     </div>
 
     <div id="main">
-      <div class="block">
-        <div class="secondary-navigation">
-          <ul>
+      <div class="secondary-navigation">
+        <ul>
 <li class="first"><a href="#">Mpumalanga</a></li>
-          </ul>
+        </ul>
 <div class="clear"></div>
+      </div>
+      <div id="content" class="inner">
+        <ul>
+<li><a href="#history-tab">History</a></li>
+          <li><a href="#introductory-tab">Introduction</a></li>
+          <li><a href="#practical-information-tab">Practical Information</a></li>
+          <li><a href="#transport-tab">Transport</a></li>
+          <li><a href="#weather-tab">Weather</a></li>
+          <li><a href="#work-live-study-tab">Work Live Study</a></li>
+        </ul>
+<div id="history-tab">
+          <div></div>
         </div>
-        <div id="content" class="inner">
-          <div id="history-tab">
-            <a href="#history-tab">History</a>
-            <div></div>
-          </div>
-          <div id="introductory-tab">
-            <a href="#tab17">Tab 17</a>
-            <div><p>Unassuming Mpumalanga (Place of the Rising Sun) adheres to a quieter pace of life. This inland province, South Africa’s smallest, is where the plateaus of the highveld begin their spectacular tumble onto the lowveld plains at the dramatic Drakensberg Escarpment. Many travellers zip through on their way to Kruger National Park, but it’s well worth setting aside a few days to explore the historic towns, roaring waterfalls and some of the best hiking trails in South Africa. </p></div>
-          </div>
-          <div id="practical-information-tab">
-            <a href="#tab18">Tab 18</a>
-            <div></div>
-          </div>
-  		    {{{destination_content}}}
+        <div id="introductory-tab">
+          <div><p>Unassuming Mpumalanga (Place of the Rising Sun) adheres to a quieter pace of life. This inland province, South Africa’s smallest, is where the plateaus of the highveld begin their spectacular tumble onto the lowveld plains at the dramatic Drakensberg Escarpment. Many travellers zip through on their way to Kruger National Park, but it’s well worth setting aside a few days to explore the historic towns, roaring waterfalls and some of the best hiking trails in South Africa. </p></div>
+        </div>
+        <div id="practical-information-tab">
+          <div></div>
+        </div>
+        <div id="transport-tab">
+          <div></div>
+        </div>
+        <div id="weather-tab">
+          <div></div>
+        </div>
+        <div id="work-live-study-tab">
+          <div></div>
         </div>
       </div>
     </div>

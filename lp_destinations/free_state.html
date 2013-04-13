@@ -4,6 +4,12 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <title>Lonely Planet</title>
 <link href="static/all.css" media="screen" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css">
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script><script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script><script>
+    $(function() {
+      $( "#content" ).tabs();
+    });
+  </script>
 </head>
 <body>
 
@@ -29,27 +35,38 @@
     </div>
 
     <div id="main">
-      <div class="block">
-        <div class="secondary-navigation">
-          <ul>
+      <div class="secondary-navigation">
+        <ul>
 <li class="first"><a href="#">Free State</a></li>
-          </ul>
+        </ul>
 <div class="clear"></div>
+      </div>
+      <div id="content" class="inner">
+        <ul>
+<li><a href="#history-tab">History</a></li>
+          <li><a href="#introductory-tab">Introduction</a></li>
+          <li><a href="#practical-information-tab">Practical Information</a></li>
+          <li><a href="#transport-tab">Transport</a></li>
+          <li><a href="#weather-tab">Weather</a></li>
+          <li><a href="#work-live-study-tab">Work Live Study</a></li>
+        </ul>
+<div id="history-tab">
+          <div></div>
         </div>
-        <div id="content" class="inner">
-          <div id="history-tab">
-            <a href="#history-tab">History</a>
-            <div></div>
-          </div>
-          <div id="introductory-tab">
-            <a href="#tab17">Tab 17</a>
-            <div><p>This is a place where farmers in floppy hats and overalls drive rusty bakkies full of sheep over bumpy roads; where giant fields of sunflowers languish by brightly painted Sotho houses. It’s true that Free State doesn’t hold any trump cards when it comes to South Africa’s not-to-be-missed attractions. In this staunchly Afrikaans region the line between the colours is stark, and dreams of an Afrikaner Arcadia live on. While there’s no question that Free State has a long way to travel on the road to racial harmony, even in the smallest rural villages, the once-impenetrable barrier between black and white is beginning to break apart. </p></div>
-          </div>
-          <div id="practical-information-tab">
-            <a href="#tab18">Tab 18</a>
-            <div></div>
-          </div>
-  		    {{{destination_content}}}
+        <div id="introductory-tab">
+          <div><p>This is a place where farmers in floppy hats and overalls drive rusty bakkies full of sheep over bumpy roads; where giant fields of sunflowers languish by brightly painted Sotho houses. It’s true that Free State doesn’t hold any trump cards when it comes to South Africa’s not-to-be-missed attractions. In this staunchly Afrikaans region the line between the colours is stark, and dreams of an Afrikaner Arcadia live on. While there’s no question that Free State has a long way to travel on the road to racial harmony, even in the smallest rural villages, the once-impenetrable barrier between black and white is beginning to break apart. </p></div>
+        </div>
+        <div id="practical-information-tab">
+          <div></div>
+        </div>
+        <div id="transport-tab">
+          <div></div>
+        </div>
+        <div id="weather-tab">
+          <div></div>
+        </div>
+        <div id="work-live-study-tab">
+          <div></div>
         </div>
       </div>
     </div>

@@ -4,6 +4,12 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <title>Lonely Planet</title>
 <link href="static/all.css" media="screen" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css">
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script><script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script><script>
+    $(function() {
+      $( "#content" ).tabs();
+    });
+  </script>
 </head>
 <body>
 
@@ -30,27 +36,38 @@
     </div>
 
     <div id="main">
-      <div class="block">
-        <div class="secondary-navigation">
-          <ul>
+      <div class="secondary-navigation">
+        <ul>
 <li class="first"><a href="#">The Garden Route</a></li>
-          </ul>
+        </ul>
 <div class="clear"></div>
+      </div>
+      <div id="content" class="inner">
+        <ul>
+<li><a href="#history-tab">History</a></li>
+          <li><a href="#introductory-tab">Introduction</a></li>
+          <li><a href="#practical-information-tab">Practical Information</a></li>
+          <li><a href="#transport-tab">Transport</a></li>
+          <li><a href="#weather-tab">Weather</a></li>
+          <li><a href="#work-live-study-tab">Work Live Study</a></li>
+        </ul>
+<div id="history-tab">
+          <div></div>
         </div>
-        <div id="content" class="inner">
-          <div id="history-tab">
-            <a href="#history-tab">History</a>
-            <div></div>
-          </div>
-          <div id="introductory-tab">
-            <a href="#tab17">Tab 17</a>
-            <div><p>The Garden Route is perhaps the most internationally renowned South African destination after Cape Town and the Kruger National Park, and with good reason. Within a few hundred kilometres, the range of topography, vegetation, wildlife and outdoor activity is breathtaking. Roughly encompassing the coastline from Mossel Bay in the west to just beyond Plettenberg Bay in the east, it caters to all kinds of travellers and all manner of budgets.You can hike in old-growth forests, bike through wildlife reserves, commune with monkeys, chill-out on superb white beaches and canoe in lagoons. The towns most commonly used as bases are Knysna and Plettenberg Bay.Places are described west to east. Most travellers visit Oudtshoorn while traversing the Garden Route so, although this town is technically in the little Karoo, we’ve included it .</p></div>
-          </div>
-          <div id="practical-information-tab">
-            <a href="#tab18">Tab 18</a>
-            <div></div>
-          </div>
-  		    {{{destination_content}}}
+        <div id="introductory-tab">
+          <div><p>The Garden Route is perhaps the most internationally renowned South African destination after Cape Town and the Kruger National Park, and with good reason. Within a few hundred kilometres, the range of topography, vegetation, wildlife and outdoor activity is breathtaking. Roughly encompassing the coastline from Mossel Bay in the west to just beyond Plettenberg Bay in the east, it caters to all kinds of travellers and all manner of budgets.You can hike in old-growth forests, bike through wildlife reserves, commune with monkeys, chill-out on superb white beaches and canoe in lagoons. The towns most commonly used as bases are Knysna and Plettenberg Bay.Places are described west to east. Most travellers visit Oudtshoorn while traversing the Garden Route so, although this town is technically in the little Karoo, we’ve included it .</p></div>
+        </div>
+        <div id="practical-information-tab">
+          <div></div>
+        </div>
+        <div id="transport-tab">
+          <div></div>
+        </div>
+        <div id="weather-tab">
+          <div></div>
+        </div>
+        <div id="work-live-study-tab">
+          <div></div>
         </div>
       </div>
     </div>

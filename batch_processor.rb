@@ -147,7 +147,7 @@ end
 
   destination_file_doc.xpath("//div[@id='history-tab']/div").each do |el|
     text = ""
-    @content_doc.xpath("//destination[@atlas_id=\"#{node_element.first.last}\"]").xpath("history").each do |el|
+    @content_doc.xpath("//destination[@atlas_id=\"#{node_element.first.last}\"]").xpath("history").children.each do |el|
       text+= "<p>#{el.text}</p>"
     end
     el.inner_html = text
@@ -155,7 +155,7 @@ end
 
   destination_file_doc.xpath("//div[@id='introductory-tab']/div").each do |el|
     text = ""
-    @content_doc.xpath("//destination[@atlas_id=\"#{node_element.first.last}\"]").xpath("introductory").each do |el|
+    @content_doc.xpath("//destination[@atlas_id=\"#{node_element.first.last}\"]").xpath("introductory").children.each do |el|
       text+= "<p>#{el.text}</p>"
     end
     el.inner_html = text
@@ -164,12 +164,37 @@ end
   destination_file_doc.xpath("//div[@id='practical-information-tab']/div").each do |el|
     text = ""
     @content_doc.xpath("//destination[@atlas_id=\"#{node_element.first.last}\"]").xpath("practical_information
-").each do |el|
+").children.each do |el|
       text+= "<p>#{el.text}</p>"
     end
     el.inner_html = text
   end
 
+  destination_file_doc.xpath("//div[@id='transport-tab']/div").each do |el|
+    text = ""
+    @content_doc.xpath("//destination[@atlas_id=\"#{node_element.first.last}\"]").xpath("transport").children.each do |el|
+      text+= "<p>#{el.text}</p>"
+    end
+    el.inner_html = text
+  end
+
+  destination_file_doc.xpath("//div[@id='weather-tab']/div").each do |el|
+    text = ""
+    @content_doc.xpath("//destination[@atlas_id=\"#{node_element.first.last}\"]").xpath("weather
+").children.each do |el|
+      text+= "<p>#{el.text}</p>"
+    end
+    el.inner_html = text
+  end
+
+  destination_file_doc.xpath("//div[@id='work-live-study-tab']/div").each do |el|
+    text = ""
+    @content_doc.xpath("//destination[@atlas_id=\"#{node_element.first.last}\"]").xpath("work_live_study
+").children.each do |el|
+      text+= "<p>#{el.text}</p>"
+    end
+    el.inner_html = text
+  end
 
   File.open("#{content.to_s.underscore}.html", "w+") do |f|
     f.write(destination_file_doc)

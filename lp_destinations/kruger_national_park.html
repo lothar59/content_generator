@@ -4,6 +4,12 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <title>Lonely Planet</title>
 <link href="static/all.css" media="screen" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css">
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script><script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script><script>
+    $(function() {
+      $( "#content" ).tabs();
+    });
+  </script>
 </head>
 <body>
 
@@ -26,27 +32,38 @@
     </div>
 
     <div id="main">
-      <div class="block">
-        <div class="secondary-navigation">
-          <ul>
+      <div class="secondary-navigation">
+        <ul>
 <li class="first"><a href="#">Kruger National Park</a></li>
-          </ul>
+        </ul>
 <div class="clear"></div>
+      </div>
+      <div id="content" class="inner">
+        <ul>
+<li><a href="#history-tab">History</a></li>
+          <li><a href="#introductory-tab">Introduction</a></li>
+          <li><a href="#practical-information-tab">Practical Information</a></li>
+          <li><a href="#transport-tab">Transport</a></li>
+          <li><a href="#weather-tab">Weather</a></li>
+          <li><a href="#work-live-study-tab">Work Live Study</a></li>
+        </ul>
+<div id="history-tab">
+          <div></div>
         </div>
-        <div id="content" class="inner">
-          <div id="history-tab">
-            <a href="#history-tab">History</a>
-            <div></div>
-          </div>
-          <div id="introductory-tab">
-            <a href="#tab17">Tab 17</a>
-            <div><p>Try to imagine a national park the size of Israel, with huge tracts of acacia, sycamore figs and bushwillow interrupted by open savannah, rushing rivers and the occasional rocky bluff. Now fill it with lions, leopards, elephants, Cape buffaloes and black rhinos (the Big Five), plus cheetahs, giraffes, hippos and many species of smaller animals, and you’ll start to have some notion of what it’s like to visit Kruger National Park.The park has an extensive network of sealed roads and comfortable camps, but if you prefer to keep it rough, there are also 4WD tracks, and mountain bike and hiking trails. Even when you stick to the tarmac, the sounds and scents of the bush are never more than a few metres away.Additionally, as long as you avoid weekends and school holidays, or stick to areas north of Phalaborwa Gate and along gravel roads, it’s easy to travel for an hour or more without seeing another vehicle.Southern Kruger is the most popular section of the park, with the highest animal concentrations and the easiest access. Kruger is at its best in the far north. Here, although animal concentrations are somewhat lower, the bush setting and wilderness atmosphere are all-enveloping.</p></div>
-          </div>
-          <div id="practical-information-tab">
-            <a href="#tab18">Tab 18</a>
-            <div></div>
-          </div>
-  		    {{{destination_content}}}
+        <div id="introductory-tab">
+          <div><p>Try to imagine a national park the size of Israel, with huge tracts of acacia, sycamore figs and bushwillow interrupted by open savannah, rushing rivers and the occasional rocky bluff. Now fill it with lions, leopards, elephants, Cape buffaloes and black rhinos (the Big Five), plus cheetahs, giraffes, hippos and many species of smaller animals, and you’ll start to have some notion of what it’s like to visit Kruger National Park.The park has an extensive network of sealed roads and comfortable camps, but if you prefer to keep it rough, there are also 4WD tracks, and mountain bike and hiking trails. Even when you stick to the tarmac, the sounds and scents of the bush are never more than a few metres away.Additionally, as long as you avoid weekends and school holidays, or stick to areas north of Phalaborwa Gate and along gravel roads, it’s easy to travel for an hour or more without seeing another vehicle.Southern Kruger is the most popular section of the park, with the highest animal concentrations and the easiest access. Kruger is at its best in the far north. Here, although animal concentrations are somewhat lower, the bush setting and wilderness atmosphere are all-enveloping.</p></div>
+        </div>
+        <div id="practical-information-tab">
+          <div></div>
+        </div>
+        <div id="transport-tab">
+          <div><p>Several domestic airlines link Jo’burg (US$160, one hour), Cape Town (US$300, 2¼ hours) and Durban (US$190, 1½ hours) with Mpumalanga Kruger International Airport (MKIA) near Nelspruit (for Numbi, Malelane and Crocodile Bridge Gates), and with Kruger Park Gateway Airport in Phalaborwa (2km from Phalaborwa Gate). Nelspruit is the most convenient large town near Kruger, and is well served by buses and minibus taxis to and from Jo’burg. Numbi Gate is about 50km away, and Malelane Gate about 65km away. Phalaborwa, in the north on the edge of Kruger, is the gateway for northern Kruger. Most visitors drive themselves around the park, and this is the best way to experience Kruger. Avis (013-735 5651; www.avis.co.za) has a branch at Skukuza, and there is car rental from the Nelspruit, Hoedspruit and Phalaborwa airports.</p></div>
+        </div>
+        <div id="weather-tab">
+          <div></div>
+        </div>
+        <div id="work-live-study-tab">
+          <div></div>
         </div>
       </div>
     </div>

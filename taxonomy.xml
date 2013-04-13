@@ -73,6 +73,326 @@
       <node atlas_node_id="355633" ethyl_content_object_id="3272" geo_id="355633">
         <node_name>Swaziland</node_name>
       </node>
+
+            <node atlas_node_id="355629" ethyl_content_object_id="3263" geo_id="355629">
+        <node_name>Sudan1</node_name>
+        <node atlas_node_id="355630" ethyl_content_object_id="" geo_id="355630">
+          <node_name>Eastern Sudan1</node_name>
+          <node atlas_node_id="355631" ethyl_content_object_id="" geo_id="355631">
+            <node_name>Port Sudan1</node_name>
+          </node>
+        </node>
+        <node atlas_node_id="355632" ethyl_content_object_id="" geo_id="355632">
+          <node_name>Khartoum1</node_name>
+        </node>
+      </node>
+      <node atlas_node_id="355633" ethyl_content_object_id="3272" geo_id="355633">
+        <node_name>Swaziland1</node_name>
+      </node>
+
+            <node atlas_node_id="355629" ethyl_content_object_id="3263" geo_id="355629">
+        <node_name>Sudan2</node_name>
+        <node atlas_node_id="355630" ethyl_content_object_id="" geo_id="355630">
+          <node_name>Eastern Sudan2</node_name>
+          <node atlas_node_id="355631" ethyl_content_object_id="" geo_id="355631">
+            <node_name>Port Sudan2</node_name>
+          </node>
+        </node>
+        <node atlas_node_id="355632" ethyl_content_object_id="" geo_id="355632">
+          <node_name>Khartoum2</node_name>
+        </node>
+      </node>
+      <node atlas_node_id="355633" ethyl_content_object_id="3272" geo_id="355633">
+        <node_name>Swaziland2</node_name>
+      </node>
+
+            <node atlas_node_id="355629" ethyl_content_object_id="3263" geo_id="355629">
+        <node_name>Sudan3</node_name>
+        <node atlas_node_id="355630" ethyl_content_object_id="" geo_id="355630">
+          <node_name>Eastern Sudan3</node_name>
+          <node atlas_node_id="355631" ethyl_content_object_id="" geo_id="355631">
+            <node_name>Port Sudan3</node_name>
+          </node>
+        </node>
+        <node atlas_node_id="355632" ethyl_content_object_id="" geo_id="355632">
+          <node_name>Khartoum3</node_name>
+        </node>
+      </node>
+      <node atlas_node_id="355633" ethyl_content_object_id="3272" geo_id="355633">
+        <node_name>Swaziland3</node_name>
+      </node>
+
+            <node atlas_node_id="355629" ethyl_content_object_id="3263" geo_id="355629">
+        <node_name>Sudan4</node_name>
+        <node atlas_node_id="355630" ethyl_content_object_id="" geo_id="355630">
+          <node_name>Eastern Sudan4</node_name>
+          <node atlas_node_id="355631" ethyl_content_object_id="" geo_id="355631">
+            <node_name>Port Sudan4</node_name>
+          </node>
+        </node>
+        <node atlas_node_id="355632" ethyl_content_object_id="" geo_id="355632">
+          <node_name>Khartoum4</node_name>
+        </node>
+      </node>
+      <node atlas_node_id="355633" ethyl_content_object_id="3272" geo_id="355633">
+        <node_name>Swaziland4</node_name>
+      </node>
+
+            <node atlas_node_id="355629" ethyl_content_object_id="3263" geo_id="355629">
+        <node_name>Sudan5</node_name>
+        <node atlas_node_id="355630" ethyl_content_object_id="" geo_id="355630">
+          <node_name>Eastern Sudan5</node_name>
+          <node atlas_node_id="355631" ethyl_content_object_id="" geo_id="355631">
+            <node_name>Port Sudan5</node_name>
+          </node>
+        </node>
+        <node atlas_node_id="355632" ethyl_content_object_id="" geo_id="355632">
+          <node_name>Khartoum5</node_name>
+        </node>
+      </node>
+      <node atlas_node_id="355633" ethyl_content_object_id="3272" geo_id="355633">
+        <node_name>Swaziland5</node_name>
+      </node>
+
+            <node atlas_node_id="355629" ethyl_content_object_id="3263" geo_id="355629">
+        <node_name>Sudan6</node_name>
+        <node atlas_node_id="355630" ethyl_content_object_id="" geo_id="355630">
+          <node_name>Eastern Sudan6</node_name>
+          <node atlas_node_id="355631" ethyl_content_object_id="" geo_id="355631">
+            <node_name>Port Sudan6</node_name>
+          </node>
+        </node>
+        <node atlas_node_id="355632" ethyl_content_object_id="" geo_id="355632">
+          <node_name>Khartoum6</node_name>
+        </node>
+      </node>
+      <node atlas_node_id="355633" ethyl_content_object_id="3272" geo_id="355633">
+        <node_name>Swaziland6</node_name>
+      </node>
+
+            <node atlas_node_id="355629" ethyl_content_object_id="3263" geo_id="355629">
+        <node_name>Sudan7</node_name>
+        <node atlas_node_id="355630" ethyl_content_object_id="" geo_id="355630">
+          <node_name>Eastern Sudan7</node_name>
+          <node atlas_node_id="355631" ethyl_content_object_id="" geo_id="355631">
+            <node_name>Port Sudan7</node_name>
+          </node>
+        </node>
+        <node atlas_node_id="355632" ethyl_content_object_id="" geo_id="355632">
+          <node_name>Khartoum7</node_name>
+        </node>
+      </node>
+      <node atlas_node_id="355633" ethyl_content_object_id="3272" geo_id="355633">
+        <node_name>Swaziland7</node_name>
+      </node>
+
+            <node atlas_node_id="355629" ethyl_content_object_id="3263" geo_id="355629">
+        <node_name>Sudan8</node_name>
+        <node atlas_node_id="355630" ethyl_content_object_id="" geo_id="355630">
+          <node_name>Eastern Sudan8</node_name>
+          <node atlas_node_id="355631" ethyl_content_object_id="" geo_id="355631">
+            <node_name>Port Sudan8</node_name>
+          </node>
+        </node>
+        <node atlas_node_id="355632" ethyl_content_object_id="" geo_id="355632">
+          <node_name>Khartoum8</node_name>
+        </node>
+      </node>
+      <node atlas_node_id="355633" ethyl_content_object_id="3272" geo_id="355633">
+        <node_name>Swaziland8</node_name>
+      </node>
+
+            <node atlas_node_id="355629" ethyl_content_object_id="3263" geo_id="355629">
+        <node_name>Sudan9</node_name>
+        <node atlas_node_id="355630" ethyl_content_object_id="" geo_id="355630">
+          <node_name>Eastern Sudan9</node_name>
+          <node atlas_node_id="355631" ethyl_content_object_id="" geo_id="355631">
+            <node_name>Port Sudan9</node_name>
+          </node>
+        </node>
+        <node atlas_node_id="355632" ethyl_content_object_id="" geo_id="355632">
+          <node_name>Khartoum9</node_name>
+        </node>
+      </node>
+      <node atlas_node_id="355633" ethyl_content_object_id="3272" geo_id="355633">
+        <node_name>Swaziland9</node_name>
+      </node>
+
+            <node atlas_node_id="355629" ethyl_content_object_id="3263" geo_id="355629">
+        <node_name>10Sudan</node_name>
+        <node atlas_node_id="355630" ethyl_content_object_id="" geo_id="355630">
+          <node_name>10Eastern Sudan</node_name>
+          <node atlas_node_id="355631" ethyl_content_object_id="" geo_id="355631">
+            <node_name>10Port Sudan</node_name>
+          </node>
+        </node>
+        <node atlas_node_id="355632" ethyl_content_object_id="" geo_id="355632">
+          <node_name>10Khartoum</node_name>
+        </node>
+      </node>
+      <node atlas_node_id="355633" ethyl_content_object_id="3272" geo_id="355633">
+        <node_name>10Swaziland</node_name>
+      </node>
+
+            <node atlas_node_id="355629" ethyl_content_object_id="3263" geo_id="355629">
+        <node_name>11Sudan</node_name>
+        <node atlas_node_id="355630" ethyl_content_object_id="" geo_id="355630">
+          <node_name>11Eastern Sudan</node_name>
+          <node atlas_node_id="355631" ethyl_content_object_id="" geo_id="355631">
+            <node_name>11Port Sudan</node_name>
+          </node>
+        </node>
+        <node atlas_node_id="355632" ethyl_content_object_id="" geo_id="355632">
+          <node_name>11Khartoum</node_name>
+        </node>
+      </node>
+      <node atlas_node_id="355633" ethyl_content_object_id="3272" geo_id="355633">
+        <node_name>11Swaziland</node_name>
+      </node>
+
+            <node atlas_node_id="355629" ethyl_content_object_id="3263" geo_id="355629">
+        <node_name>12Sudan</node_name>
+        <node atlas_node_id="355630" ethyl_content_object_id="" geo_id="355630">
+          <node_name>12Eastern Sudan</node_name>
+          <node atlas_node_id="355631" ethyl_content_object_id="" geo_id="355631">
+            <node_name>12Port Sudan</node_name>
+          </node>
+        </node>
+        <node atlas_node_id="355632" ethyl_content_object_id="" geo_id="355632">
+          <node_name>12Khartoum</node_name>
+        </node>
+      </node>
+      <node atlas_node_id="355633" ethyl_content_object_id="3272" geo_id="355633">
+        <node_name>12Swaziland</node_name>
+      </node>
+
+            <node atlas_node_id="355629" ethyl_content_object_id="3263" geo_id="355629">
+        <node_name>13Sudan</node_name>
+        <node atlas_node_id="355630" ethyl_content_object_id="" geo_id="355630">
+          <node_name>13Eastern Sudan</node_name>
+          <node atlas_node_id="355631" ethyl_content_object_id="" geo_id="355631">
+            <node_name>13Port Sudan</node_name>
+          </node>
+        </node>
+        <node atlas_node_id="355632" ethyl_content_object_id="" geo_id="355632">
+          <node_name>13Khartoum</node_name>
+        </node>
+      </node>
+      <node atlas_node_id="355633" ethyl_content_object_id="3272" geo_id="355633">
+        <node_name>13Swaziland</node_name>
+      </node>
+
+            <node atlas_node_id="355629" ethyl_content_object_id="3263" geo_id="355629">
+        <node_name>14Sudan</node_name>
+        <node atlas_node_id="355630" ethyl_content_object_id="" geo_id="355630">
+          <node_name>14Eastern Sudan</node_name>
+          <node atlas_node_id="355631" ethyl_content_object_id="" geo_id="355631">
+            <node_name>14Port Sudan</node_name>
+          </node>
+        </node>
+        <node atlas_node_id="355632" ethyl_content_object_id="" geo_id="355632">
+          <node_name>14Khartoum</node_name>
+        </node>
+      </node>
+      <node atlas_node_id="355633" ethyl_content_object_id="3272" geo_id="355633">
+        <node_name>14Swaziland</node_name>
+      </node>
+
+            <node atlas_node_id="355629" ethyl_content_object_id="3263" geo_id="355629">
+        <node_name>15Sudan</node_name>
+        <node atlas_node_id="355630" ethyl_content_object_id="" geo_id="355630">
+          <node_name>15Eastern Sudan</node_name>
+          <node atlas_node_id="355631" ethyl_content_object_id="" geo_id="355631">
+            <node_name>15Port Sudan</node_name>
+          </node>
+        </node>
+        <node atlas_node_id="355632" ethyl_content_object_id="" geo_id="355632">
+          <node_name>15Khartoum</node_name>
+        </node>
+      </node>
+      <node atlas_node_id="355633" ethyl_content_object_id="3272" geo_id="355633">
+        <node_name>15Swaziland</node_name>
+      </node>
+
+            <node atlas_node_id="355629" ethyl_content_object_id="3263" geo_id="355629">
+        <node_name>16Sudan</node_name>
+        <node atlas_node_id="355630" ethyl_content_object_id="" geo_id="355630">
+          <node_name>16Eastern Sudan</node_name>
+          <node atlas_node_id="355631" ethyl_content_object_id="" geo_id="355631">
+            <node_name>16Port Sudan</node_name>
+          </node>
+        </node>
+        <node atlas_node_id="355632" ethyl_content_object_id="" geo_id="355632">
+          <node_name>16Khartoum</node_name>
+        </node>
+      </node>
+      <node atlas_node_id="355633" ethyl_content_object_id="3272" geo_id="355633">
+        <node_name>16Swaziland</node_name>
+      </node>
+
+            <node atlas_node_id="355629" ethyl_content_object_id="3263" geo_id="355629">
+        <node_name>17Sudan</node_name>
+        <node atlas_node_id="355630" ethyl_content_object_id="" geo_id="355630">
+          <node_name>17Eastern Sudan</node_name>
+          <node atlas_node_id="355631" ethyl_content_object_id="" geo_id="355631">
+            <node_name>17Port Sudan</node_name>
+          </node>
+        </node>
+        <node atlas_node_id="355632" ethyl_content_object_id="" geo_id="355632">
+          <node_name>17Khartoum</node_name>
+        </node>
+      </node>
+      <node atlas_node_id="355633" ethyl_content_object_id="3272" geo_id="355633">
+        <node_name>17Swaziland</node_name>
+      </node>
+
+            <node atlas_node_id="355629" ethyl_content_object_id="3263" geo_id="355629">
+        <node_name>18Sudan</node_name>
+        <node atlas_node_id="355630" ethyl_content_object_id="" geo_id="355630">
+          <node_name>18Eastern Sudan</node_name>
+          <node atlas_node_id="355631" ethyl_content_object_id="" geo_id="355631">
+            <node_name>18Port Sudan</node_name>
+          </node>
+        </node>
+        <node atlas_node_id="355632" ethyl_content_object_id="" geo_id="355632">
+          <node_name>18Khartoum</node_name>
+        </node>
+      </node>
+      <node atlas_node_id="355633" ethyl_content_object_id="3272" geo_id="355633">
+        <node_name>18Swaziland</node_name>
+      </node>
+
+            <node atlas_node_id="355629" ethyl_content_object_id="3263" geo_id="355629">
+        <node_name>20Sudan</node_name>
+        <node atlas_node_id="355630" ethyl_content_object_id="" geo_id="355630">
+          <node_name>20Eastern Sudan</node_name>
+          <node atlas_node_id="355631" ethyl_content_object_id="" geo_id="355631">
+            <node_name>20Port Sudan</node_name>
+          </node>
+        </node>
+        <node atlas_node_id="355632" ethyl_content_object_id="" geo_id="355632">
+          <node_name>20Khartoum</node_name>
+        </node>
+      </node>
+      <node atlas_node_id="355633" ethyl_content_object_id="3272" geo_id="355633">
+        <node_name>20Swaziland</node_name>
+      </node>
+
+            <node atlas_node_id="355629" ethyl_content_object_id="3263" geo_id="355629">
+        <node_name>21Sudan</node_name>
+        <node atlas_node_id="355630" ethyl_content_object_id="" geo_id="355630">
+          <node_name>21Eastern Sudan</node_name>
+          <node atlas_node_id="355631" ethyl_content_object_id="" geo_id="355631">
+            <node_name>21Port Sudan</node_name>
+          </node>
+        </node>
+        <node atlas_node_id="355632" ethyl_content_object_id="" geo_id="355632">
+          <node_name>21Khartoum</node_name>
+        </node>
+      </node>
+      <node atlas_node_id="355633" ethyl_content_object_id="3272" geo_id="355633">
+        <node_name>21Swaziland</node_name>
+      </node>
     </node>
   </taxonomy>
 </taxonomies>

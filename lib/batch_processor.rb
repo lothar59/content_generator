@@ -13,16 +13,10 @@ class BatchProcessor
   end
 
   def generate_destination_files
-    unless File.exists?(@output_dir)
-      Dir.mkdir(@output_dir)
-    else
-      Dir.open(@output_dir)
-    end
-
-    FileUtils.cp_r "output-template/static", @output_dir
-
-    Dir.chdir(@output_dir)
-
+    create_output_dir
+    copy_static_files
+    move_in_directory
+    
     @taxonomy_document.xpath("/taxonomies/taxonomy/descendant::node").each do |node_element|
       content = node_element.children.first.text if node_element.children && node_element.children.first # eventually case content is blank?
 
@@ -127,5 +121,21 @@ class BatchProcessor
 
     def open_template
       open_html_document(File.open("../output-template/template.html"))
+    end
+
+    def create_output_dir
+      unless File.exists?(@output_dir)
+        Dir.mkdir(@output_dir)
+      else
+        Dir.open(@output_dir)
+      end
+    end
+
+    def copy_static_files
+      FileUtils.cp_r "output-template/static", @output_dir
+    end
+
+    def move_in_directory
+      Dir.chdir(@output_dir)
     end
 end

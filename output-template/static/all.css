@@ -19,6 +19,7 @@ ul#nav { list-style:none; text-align:center; border-top:1px solid #555; border-b
 ul#nav li { text-transform:uppercase; padding:0 10px; letter-spacing:3px; text-align: left; margin-left: 20px;}
 ul#nav li a { text-decoration:none; color:#555; font-weight: bold; }
 ul#nav li a:hover { text-decoration:underline; }
+ul#nav li.parent_li { margin-bottom: 15px; }
 
 #div-content { padding: 10px 20px; }
 

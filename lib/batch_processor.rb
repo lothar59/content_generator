@@ -4,93 +4,41 @@ require_relative 'underscore.rb'
 
 class BatchProcessor
 
-  attr_accessor :taxonomy_document, :content_document, :output_dir
+  attr_accessor :taxonomy_document, :content_document, :output_dir, :destination_file_document, :node_text
 
   def initialize(params)
-    @taxonomy_document = open_xml_document(params[:taxonomy])
-    @content_document = open_xml_document(params[:content])
-    @output_dir = params[:output_dir]
+    @taxonomy_document          = open_xml_document(params[:taxonomy])
+    @content_document           = open_xml_document(params[:content])
+    @output_dir                 = params[:output_dir]
+    @destination_file_document  = nil
+    @node_text                  = nil
   end
 
   def generate_destination_files
+    # Prepare for parsing
     create_output_dir
     copy_static_files
     move_in_directory
 
-    @taxonomy_document.xpath("/taxonomies/taxonomy/descendant::node").each do |node_element|
-      node_text = get_node_text(node_element)
+    get_root_nodes.each do |node_element|
+      # Replace the {{{destination_name}}} tag with the actual destination name
+      set_destination_name(node_element)
 
-      destination_file_doc = open_template
+      # Create navigation links
+      parent_li = parent_link(node_element)
+      children_nodes = get_children_nodes(node_element)
+      children_lis = children_links(children_nodes, node_element)
+      set_navigation_links(parent_li, children_lis)
 
-      replace_destination_name(destination_file_doc, node_text)
+      # Set the content data from destination.xml
+      set_content_data(node_element)
 
-      @children_nodes = node_element.xpath("node")
+      # Create the html destination file
+      create_destination_file
 
-      lis = ""
-      text = node_element.parent.xpath("node_name").text
-      unless text == ""
-        file_name = text.underscore
-        path = File.absolute_path(file_name)
-        lis+= "<li><a href=\"#{file_name}.html\">#{text}</a></li>"
-      end
-
-      @children_nodes.each do |element|
-        text = element.xpath("node_name").text
-        file_name = text.underscore
-        path = File.absolute_path(file_name)
-        lis += "<li><a href=\"#{file_name}.html\">#{text}</a></li>"
-      end
-
-      destination_file_doc.css("#nav").first.inner_html = lis
-
-      tabs_lis = ""
-      %w{history introductory practical_information transport weather work_live_study}.each do |tab|
-        tabs_contents = ""
-        @content_document.xpath("//destination[@atlas_id=\"#{node_element.first.last}\"]/#{tab}").each do |tag| 
-          tabs_lis += "<li><a href=\"##{tab}_tab\">#{tab.gsub('_', ' ').upcase}</a></li>"
-          tag.children.each { |el| tabs_contents += "<p>#{el.text}</p>" }
-        end
-
-        destination_file_doc.css("#content-tabs").first.inner_html = tabs_lis
-        destination_file_doc.css("##{tab}_tab").first.inner_html = tabs_contents
-      end
-
-      create_destination_file(destination_file_doc, node_text)
-
-      create_file(@children_nodes.first, node_element) if @children_nodes.any?
+      # Create next file if it exists
+      create_file(children_nodes.first, node_element) if children_nodes.any?
     end
-  end
-
-  def create_file(node_element, parent) 
-    node_text = get_node_text(node_element)  
-    
-    destination_file_doc = open_template
-
-    replace_destination_name(destination_file_doc, node_text)
-    
-    create_destination_file(destination_file_doc, node_text)
-
-    children_nodes = node_element.xpath("node")
-    if children_nodes.any? 
-      next_node = children_nodes.first
-      new_parent = node_element
-      create_file(next_node, new_parent)
-    else
-      next_node, new_parent = get_next_node(node_element, parent)
-      create_file(next_node, new_parent) if next_node
-    end
-  end
-
-  def get_next_node(node_element, parent)
-    if node = node_element.next
-      next_node = node
-      new_parent = parent
-    else
-      next_node = parent.next
-      new_parent = parent.parent
-      get_next_node(next_node, new_parent) if next_node 
-    end 
-    [next_node, new_parent]
   end
 
   private
@@ -109,7 +57,7 @@ class BatchProcessor
       end
     end
 
-    def open_template
+    def open_html_template
       open_html_document(File.open("../output-template/template.html"))
     end
 
@@ -133,15 +81,94 @@ class BatchProcessor
       node_element.children.first.text if node_element.children && node_element.children.first # eventually case node_text is blank?
     end
 
-    def replace_destination_name(destination_file_doc, node_text)
-      destination_file_doc.xpath("//*[contains(text(),'{{{destination_name}}}')]").each do |el|
+    def replace_destination_name(node_text)
+      @destination_file_document.xpath("//*[contains(text(),'{{{destination_name}}}')]").each do |el|
         el.content = el.content.gsub!(/{{{destination_name}}}/, node_text.to_s)
       end 
     end
 
-    def create_destination_file(destination_file_doc, node_text)
-      File.open("#{node_text.to_s.underscore}.html", "w+") do |f|
-        f.write(destination_file_doc)
+    def create_destination_file
+      File.open("#{@node_text.to_s.underscore}.html", "w+") do |f|
+        f.write(@destination_file_document)
+      end
+    end
+
+    def set_destination_name(node_element)
+      @node_text = get_node_text(node_element)  
+      @destination_file_document = open_html_template
+      replace_destination_name(node_text)
+    end
+
+    def create_file(node_element, parent) 
+      set_destination_name(node_element)
+      
+      create_destination_file
+
+      children_nodes = get_children_nodes(node_element)
+      if children_nodes.any? 
+        next_node = children_nodes.first
+        new_parent = node_element
+        create_file(next_node, new_parent)
+      else
+        next_node, new_parent = get_next_node(node_element, parent)
+        create_file(next_node, new_parent) if next_node
+      end
+    end
+
+    def get_next_node(node_element, parent)
+      if node = node_element.next
+        next_node = node
+        new_parent = parent
+      else
+        next_node = parent.next
+        new_parent = parent.parent
+        get_next_node(next_node, new_parent) if next_node 
+      end 
+      [next_node, new_parent]
+    end
+
+    def parent_link(node_element)
+      text = node_element.parent.xpath("node_name").text
+      unless text == ""
+        file_name = text.underscore
+        parent_li = "<li class='parent_li'><a href=\"#{file_name}.html\">#{text}</a></li>"
+      end
+      parent_li.to_s 
+    end
+
+    def get_children_nodes(node_element)
+      node_element.xpath("node")
+    end
+
+    def children_links(children_nodes, node_element)
+      children_lis = ""
+      children_nodes.each do |element|
+        text = element.xpath("node_name").text
+        file_name = text.underscore
+        children_lis += "<li><a href=\"#{file_name}.html\">#{text}</a></li>"
+      end
+      children_lis
+    end
+
+    def set_navigation_links(parent_li, children_lis)
+      @destination_file_document.css("#nav").first.inner_html = parent_li + children_lis
+    end
+
+    def get_root_nodes
+      @taxonomy_document.xpath("/taxonomies/taxonomy/descendant::node")
+    end
+
+    def set_content_data(node_element)
+      tabs_lis = ""
+      %w{history introductory practical_information transport weather work_live_study}.each do |tab|
+        tabs_contents = ""
+        @content_document.xpath("//destination[@atlas_id=\"#{node_element.first.last}\"]/#{tab}").each do |tag| 
+          tabs_lis += "<li><a href=\"##{tab}_tab\">#{tab.gsub('_', ' ').upcase}</a></li>"
+          tag.children.each { |el| tabs_contents += "<p>#{el.text}</p>" }
+        end
+
+        @destination_file_document.css("#content-tabs").first.inner_html = tabs_lis
+        @destination_file_document.css("##{tab}_tab").first.inner_html = tabs_contents
       end
     end
 end

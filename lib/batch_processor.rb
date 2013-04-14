@@ -16,15 +16,13 @@ class BatchProcessor
     create_output_dir
     copy_static_files
     move_in_directory
-    
+
     @taxonomy_document.xpath("/taxonomies/taxonomy/descendant::node").each do |node_element|
-      content = node_element.children.first.text if node_element.children && node_element.children.first # eventually case content is blank?
+      node_text = get_node_text(node_element)
 
       destination_file_doc = open_template
 
-      destination_file_doc.xpath("//*[contains(text(),'{{{destination_name}}}')]").each do |el|
-        el.content = el.content.gsub!(/{{{destination_name}}}/, content.to_s)
-      end
+      replace_destination_name(destination_file_doc, node_text)
 
       @children_nodes = node_element.xpath("node")
 
@@ -43,9 +41,7 @@ class BatchProcessor
         lis += "<li><a href=\"#{file_name}.html\">#{text}</a></li>"
       end
 
-      destination_file_doc.xpath("//ul[@id='nav'][1]").each do |el|
-        el.inner_html = lis
-      end
+      destination_file_doc.css("#nav").first.inner_html = lis
 
       tabs_lis = ""
       %w{history introductory practical_information transport weather work_live_study}.each do |tab|
@@ -59,26 +55,20 @@ class BatchProcessor
         destination_file_doc.css("##{tab}_tab").first.inner_html = tabs_contents
       end
 
-      File.open("#{content.to_s.underscore}.html", "w+") do |f|
-        f.write(destination_file_doc)
-      end
+      create_destination_file(destination_file_doc, node_text)
 
       create_file(@children_nodes.first, node_element) if @children_nodes.any?
     end
   end
 
   def create_file(node_element, parent) 
-    content = node_element.children.first.text if node_element.children && node_element.children.first # eventually case content is blank?  
+    node_text = get_node_text(node_element)  
     
     destination_file_doc = open_template
 
-    destination_file_doc.xpath("//*[contains(text(),'{{{destination_name}}}')]").each do |el|
-      el.content = el.content.gsub!(/{{{destination_name}}}/, content.to_s)
-    end
-
-    File.open("#{content.to_s.underscore}.html", "w+") do |f|
-      f.write(destination_file_doc)
-    end
+    replace_destination_name(destination_file_doc, node_text)
+    
+    create_destination_file(destination_file_doc, node_text)
 
     children_nodes = node_element.xpath("node")
     if children_nodes.any? 
@@ -137,5 +127,21 @@ class BatchProcessor
 
     def move_in_directory
       Dir.chdir(@output_dir)
+    end
+
+    def get_node_text(node_element)
+      node_element.children.first.text if node_element.children && node_element.children.first # eventually case node_text is blank?
+    end
+
+    def replace_destination_name(destination_file_doc, node_text)
+      destination_file_doc.xpath("//*[contains(text(),'{{{destination_name}}}')]").each do |el|
+        el.content = el.content.gsub!(/{{{destination_name}}}/, node_text.to_s)
+      end 
+    end
+
+    def create_destination_file(destination_file_doc, node_text)
+      File.open("#{node_text.to_s.underscore}.html", "w+") do |f|
+        f.write(destination_file_doc)
+      end
     end
 end

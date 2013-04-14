@@ -1,10 +1,11 @@
 require 'nokogiri'
 require 'fileutils'
-require_relative 'underscore.rb'
+require_relative 'underscore'
 
 class BatchProcessor
 
-  attr_accessor :taxonomy_document, :content_document, :output_dir, :destination_file_document, :node_text
+  attr_accessor :taxonomy_document, :content_document, :output_dir, 
+                :destination_file_document, :node_text, :children_nodes
 
   def initialize(params)
     @taxonomy_document          = open_xml_document(params[:taxonomy])
@@ -12,6 +13,7 @@ class BatchProcessor
     @output_dir                 = params[:output_dir]
     @destination_file_document  = nil
     @node_text                  = nil
+    @children_nodes             = nil
   end
 
   def generate_destination_files
@@ -25,10 +27,7 @@ class BatchProcessor
       set_destination_name(node_element)
 
       # Create navigation links
-      parent_li = parent_link(node_element)
-      children_nodes = get_children_nodes(node_element)
-      children_lis = children_links(children_nodes, node_element)
-      set_navigation_links(parent_li, children_lis)
+      create_navigation_links(node_element)
 
       # Set the content data from destination.xml
       set_content_data(node_element)
@@ -37,7 +36,7 @@ class BatchProcessor
       create_destination_file
 
       # Create next file if it exists
-      create_file(children_nodes.first, node_element) if children_nodes.any?
+      create_file(@children_nodes.first, node_element) if @children_nodes.any?
     end
   end
 
@@ -99,14 +98,21 @@ class BatchProcessor
       replace_destination_name(node_text)
     end
 
+    def create_navigation_links(node_element)
+      parent_li = parent_link(node_element)
+      set_children_nodes(node_element)
+      children_lis = children_links(node_element)
+      set_navigation_links(parent_li, children_lis)
+    end
+
     def create_file(node_element, parent) 
       set_destination_name(node_element)
       
       create_destination_file
 
-      children_nodes = get_children_nodes(node_element)
-      if children_nodes.any? 
-        next_node = children_nodes.first
+      set_children_nodes(node_element)
+      if @children_nodes.any? 
+        next_node = @children_nodes.first
         new_parent = node_element
         create_file(next_node, new_parent)
       else
@@ -136,13 +142,13 @@ class BatchProcessor
       parent_li.to_s 
     end
 
-    def get_children_nodes(node_element)
-      node_element.xpath("node")
+    def set_children_nodes(node_element)
+      @children_nodes = node_element.xpath("node")
     end
 
-    def children_links(children_nodes, node_element)
+    def children_links(node_element)
       children_lis = ""
-      children_nodes.each do |element|
+      @children_nodes.each do |element|
         text = element.xpath("node_name").text
         file_name = text.underscore
         children_lis += "<li><a href=\"#{file_name}.html\">#{text}</a></li>"

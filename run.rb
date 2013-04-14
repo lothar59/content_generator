@@ -21,4 +21,4 @@ unless options[:taxonomy] && options[:content] && options[:output_dir] && ARGV[0
   abort("Please provide the right options to the processor\n batch_processor.rb --help for more help")
 end
 
-BatchProcessor.generate_files(taxonomy: ARGV[0], content: ARGV[1], output_dir: ARGV[2])
+BatchProcessor.new(taxonomy: ARGV[0], content: ARGV[1], output_dir: ARGV[2]).generate_destination_files

@@ -20,6 +20,8 @@ ul#nav li { text-transform:uppercase; padding:0 10px; letter-spacing:3px; text-a
 ul#nav li a { text-decoration:none; color:#555; font-weight: bold; }
 ul#nav li a:hover { text-decoration:underline; }
 
+#div-content { padding: 10px 20px; }
+
 #container {
   min-width: 960px;
 }

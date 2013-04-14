@@ -4,52 +4,37 @@ require_relative 'underscore.rb'
 
 class BatchProcessor
 
-  def self.generate_files(params)
-    taxonomy_file = File.open(params[:taxonomy])
-    @taxonomy_doc = 
-      Nokogiri::XML(taxonomy_file) do |config|
-        config.strict.nonet
-        config.strict.noblanks
-      end
+  attr_accessor :taxonomy_document, :content_document, :output_dir
 
-    content_file = File.open(params[:content])
-    @content_doc = 
-      Nokogiri::XML(content_file) do |config|
-        config.strict.nonet
-        config.strict.noblanks
-      end
+  def initialize(params)
+    @taxonomy_document = open_xml_document(params[:taxonomy])
+    @content_document = open_xml_document(params[:content])
+    @output_dir = params[:output_dir]
+  end
 
-    output_dir = params[:output_dir]
-    unless File.exists?(output_dir)
-      Dir.mkdir(output_dir)
+  def generate_destination_files
+    unless File.exists?(@output_dir)
+      Dir.mkdir(@output_dir)
     else
-      Dir.open(output_dir)
+      Dir.open(@output_dir)
     end
 
-    FileUtils.cp_r "output-template/static", output_dir
+    FileUtils.cp_r "output-template/static", @output_dir
 
-    Dir.chdir(output_dir)
+    Dir.chdir(@output_dir)
 
-    @taxonomy_doc.xpath("/taxonomies/taxonomy/descendant::node").each do |node_element|
+    @taxonomy_document.xpath("/taxonomies/taxonomy/descendant::node").each do |node_element|
       content = node_element.children.first.text if node_element.children && node_element.children.first # eventually case content is blank?
 
-      template_file = File.open("../output-template/template.html")  
-      destination_file_doc = 
-        Nokogiri::HTML(template_file) do |config|
-          config.strict.nonet
-          config.strict.noblanks
-        end
+      destination_file_doc = open_template
 
       destination_file_doc.xpath("//*[contains(text(),'{{{destination_name}}}')]").each do |el|
         el.content = el.content.gsub!(/{{{destination_name}}}/, content.to_s)
       end
 
-      template_file.close
-
       @children_nodes = node_element.xpath("node")
 
       lis = ""
-
       text = node_element.parent.xpath("node_name").text
       unless text == ""
         file_name = text.underscore
@@ -69,18 +54,15 @@ class BatchProcessor
       end
 
       tabs_lis = ""
-      tabs_contents = ""
       %w{history introductory practical_information transport weather work_live_study}.each do |tab|
-        @content_doc.xpath("//destination[@atlas_id=\"#{node_element.first.last}\"]").xpath("#{tab}").each do |tag| 
+        tabs_contents = ""
+        @content_document.xpath("//destination[@atlas_id=\"#{node_element.first.last}\"]/#{tab}").each do |tag| 
           tabs_lis += "<li><a href=\"##{tab}_tab\">#{tab.gsub('_', ' ').upcase}</a></li>"
-          tabs_contents += "<div id=\"#{tab}_tab\">#{tag.text}</div>"
+          tag.children.each { |el| tabs_contents += "<p>#{el.text}</p>" }
         end
-        destination_file_doc.xpath("//div[@id='content']/ul[1]").each do |el|
-          el.inner_html = tabs_lis
-        end
-        destination_file_doc.xpath("//div[@id='content']/div[1]").each do |el|
-          el.inner_html = tabs_contents
-        end
+
+        destination_file_doc.css("#content-tabs").first.inner_html = tabs_lis
+        destination_file_doc.css("##{tab}_tab").first.inner_html = tabs_contents
       end
 
       File.open("#{content.to_s.underscore}.html", "w+") do |f|
@@ -89,19 +71,12 @@ class BatchProcessor
 
       create_file(@children_nodes.first, node_element) if @children_nodes.any?
     end
-    taxonomy_file.close
-    content_file.close
   end
 
-  def self.create_file(node_element, parent) 
+  def create_file(node_element, parent) 
     content = node_element.children.first.text if node_element.children && node_element.children.first # eventually case content is blank?  
     
-    template_file = File.open("../output-template/template.html")  
-    destination_file_doc = 
-      Nokogiri::HTML(template_file)  do |config|
-        config.strict.nonet
-        config.strict.noblanks
-      end
+    destination_file_doc = open_template
 
     destination_file_doc.xpath("//*[contains(text(),'{{{destination_name}}}')]").each do |el|
       el.content = el.content.gsub!(/{{{destination_name}}}/, content.to_s)
@@ -111,8 +86,6 @@ class BatchProcessor
       f.write(destination_file_doc)
     end
 
-    template_file.close
-    
     children_nodes = node_element.xpath("node")
     if children_nodes.any? 
       next_node = children_nodes.first
@@ -124,7 +97,7 @@ class BatchProcessor
     end
   end
 
-  def self.get_next_node(node_element, parent)
+  def get_next_node(node_element, parent)
     if node = node_element.next
       next_node = node
       new_parent = parent
@@ -136,4 +109,23 @@ class BatchProcessor
     [next_node, new_parent]
   end
 
+  private
+
+    def open_xml_document(file)
+      Nokogiri::XML(File.open(file)) do |config|
+        config.strict.nonet
+        config.strict.noblanks
+      end
+    end
+
+    def open_html_document(file)
+      Nokogiri::HTML(File.open(file)) do |config|
+        config.strict.nonet
+        config.strict.noblanks
+      end
+    end
+
+    def open_template
+      open_html_document(File.open("../output-template/template.html"))
+    end
 end
